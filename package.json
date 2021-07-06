@@ -28,7 +28,7 @@
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^4.6.0",
     "error-overlay-webpack-plugin": "^0.4.2",
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "html-webpack-plugin": "^4.5.2",
     "semantic-release": "^17.2.3",
     "ts-loader": "^8.3.0",
