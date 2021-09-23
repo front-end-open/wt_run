@@ -44,6 +44,6 @@
     "@babel/core": "^7.14.6",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.7",
-    "semantic-release": "^17.4.4"
+    "semantic-release": "^18.0.0"
   }
 }
