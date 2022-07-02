@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-02 23:25:37
+ * @LastEditTime: 2022-07-03 00:21:02
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -18,6 +18,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "../src"),
     },
+    extensions: [".js", ".ts", "tsx", "..."], // 模块解析规则, ... 用于访问webpack配置默认的解析规则
   },
   output: {
     filename: "[name].min.js",
