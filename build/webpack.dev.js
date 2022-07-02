@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 07:36:38
+ * @LastEditTime: 2022-07-03 07:42:33
  * @Description: development
  * @Date: 2022-07-02 20:15:00
  * @Author: wangshan
@@ -20,6 +20,7 @@ module.exports = smp.wrap(
     devtool: 'inline-source-map',
     devServer: {
       static: '../dist',
+      hot: true,
     },
   })
 );
