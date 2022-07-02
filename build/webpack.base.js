@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 00:21:02
+ * @LastEditTime: 2022-07-03 00:22:19
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -14,15 +14,15 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "../src") + "/index.ts",
   },
+  output: {
+    filename: "[name].min.js",
+    path: path.resolve(__dirname, "../dist"),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src"),
     },
-    extensions: [".js", ".ts", "tsx", "..."], // 模块解析规则, ... 用于访问webpack配置默认的解析规则
-  },
-  output: {
-    filename: "[name].min.js",
-    path: path.resolve(__dirname, "../dist"),
+    extensions: [".js", ".ts", "tsx", "..."], // 模块解析规则, ... 用于访问webpack配置默认的解析规则. 扩展解析顺序从前往后
   },
   plugins: [
     new CleanWebpackPlugin(),
