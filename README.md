@@ -15,3 +15,10 @@
 #### 开发相关
 
 - TypeScript 支持
+
+## 集成方案 FAQ
+
+1. 关于 ts 编译期的类型检查方案
+
+- 使用 babel, @babel/preset-typescript. 配合 tsc 做类型检查
+- 使用 ts-loader, fork-ts-webpack-plugin，单独进程做编译期的类型检查. 这里也是利用 tsc 的类型检查
