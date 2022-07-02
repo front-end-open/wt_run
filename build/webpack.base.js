@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 02:27:38
+ * @LastEditTime: 2022-07-03 04:17:51
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -24,12 +24,17 @@ module.exports = {
       {
         test: /\.tsx?$/, // 配置ts文件检测
         exclude: /node_modules/, // 排查指定模块[node_modules]下的模块解析
-        use: {
-          loader: "ts-loader",
-          options: {
-            transpileOnly: true, // 关闭编译时，类型检查. 提高编译效率
+        use: [
+          {
+            loader: "babel-loader",
           },
-        },
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true, // 关闭编译时，类型检查. 提高编译效率
+            },
+          },
+        ],
       },
     ],
   },

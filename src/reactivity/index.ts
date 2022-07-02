@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 03:07:47
+ * @LastEditTime: 2022-07-03 04:11:30
  * @Description:
  * @Date: 2022-07-03 02:40:23
  * @Author: wangshan
@@ -28,3 +28,33 @@ arr.forEach((v) => {
 });
 
 log(arr.at(-1));
+
+const posttag = (): void => {
+  document.body.style.backgroundColor = "red";
+};
+
+posttag();
+
+const promsise = new Promise(() => {});
+
+function makeWeakCached(f) {
+  const cache = new Map();
+  return (key) => {
+    const ref = cache.get(key);
+    if (ref) {
+      const cached = ref.deref();
+      if (cached !== undefined) return cached;
+    }
+
+    const fresh = f(key);
+    // @ts-node
+    cache.set(key, new WeakRef(fresh));
+    return fresh;
+  };
+}
+
+const getImageCached = makeWeakCached(() => {
+  return { a: 1 };
+});
+
+log(getImageCached as any);

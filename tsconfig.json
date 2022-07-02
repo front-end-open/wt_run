@@ -1,6 +1,7 @@
 {
   // 编译选项
   "compilerOptions": {
+    "lib": ["ESNext", "DOM"], // 开启ecmascript规则集
     "baseUrl": ".",
     "module": "esnext", // 模块方案, UMD, AMD, CommonJS, System, ESNex, ES2015...
     "sourceMap": true, // 开启sourcemap,需要配合打包工具的devtool-sourcemap功能
