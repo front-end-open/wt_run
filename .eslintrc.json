@@ -5,7 +5,7 @@
   },
   "parser": "@typescript-eslint/parser", // ts源码映射
   //   "plugins": ["@typescript-eslint"], // 启用ts插件，然后自定义配置规则，而不是启用所有推荐规则特性
-  "extends": ["plugin:@typescript-eslint/recommended"], // 启用ts-lint, 启用所有推荐特性
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier"], // 启用ts-lint, 启用所有推荐特性
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
