@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-02 21:46:04
+ * @LastEditTime: 2022-07-02 23:25:37
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -12,7 +12,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, "../src") + "/index.js",
+    main: path.resolve(__dirname, "../src") + "/index.ts",
   },
   resolve: {
     alias: {
