@@ -4,6 +4,7 @@ node_modules
 .cssrem
 .eslintignore
 .prettierrc
+*.map
 
 
 # local env files
