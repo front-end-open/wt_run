@@ -43,4 +43,11 @@
 - 多入口起点，重复依赖抽离
 - 入口依赖，放置重复。配置 runtimeChunk: 'single', dependOn
 - 动态导入
+
+2. 构建速度分析
 - 
+
+3. 构建资源分析
+
+- webpack-bundle-analyzer
+- https://webpack.jakoblind.no/optimize/#

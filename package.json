@@ -42,5 +42,8 @@
     "webpack-dev-server": "^4.9.3",
     "webpack-merge": "^5.8.0",
     "webpackbar": "^5.0.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.3"
   }
 }
