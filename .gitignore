@@ -5,6 +5,7 @@ node_modules
 .eslintignore
 .prettierrc
 *.map
+src/**/*.js
 
 
 # local env files
