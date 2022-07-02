@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-02 20:40:00
+ * @LastEditTime: 2022-07-02 21:06:03
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "TypeScript",
+      template: "/public/index.html",
     }),
   ],
 };
