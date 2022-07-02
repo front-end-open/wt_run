@@ -35,3 +35,12 @@
 
 2. webpack 模块解析
    > webpack 的模块解析是在构建为了构建依赖图，需要明确指定的一个路径别名。区别 ts 的检查机制
+
+## 构建优化
+
+1. code-split
+
+- 多入口起点，重复依赖抽离
+- 入口依赖，放置重复。配置 runtimeChunk: 'single', dependOn
+- 动态导入
+- 
