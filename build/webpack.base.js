@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 01:06:15
+ * @LastEditTime: 2022-07-03 02:14:39
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -26,7 +26,7 @@ module.exports = {
         use: {
           loader: "ts-loader",
           options: {
-            transpileOnly: false, // 关闭编译时，类型检查
+            transpileOnly: false, // 关闭编译时，类型检查. 提高编译效率
           },
         },
       },
