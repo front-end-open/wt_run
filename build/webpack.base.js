@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 00:23:32
+ * @LastEditTime: 2022-07-03 01:06:15
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -17,6 +17,20 @@ module.exports = {
   output: {
     filename: "[name].min.js",
     path: path.resolve(__dirname, "../dist"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/, // 配置ts文件检测
+        exclude: /node_modules/, // 排查指定模块[node_modules]下的模块解析
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: false, // 关闭编译时，类型检查
+          },
+        },
+      },
+    ],
   },
   resolve: {
     alias: {
