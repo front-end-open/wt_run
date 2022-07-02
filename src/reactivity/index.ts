@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 04:11:30
+ * @LastEditTime: 2022-07-03 05:08:27
  * @Description:
  * @Date: 2022-07-03 02:40:23
  * @Author: wangshan
@@ -35,7 +35,10 @@ const posttag = (): void => {
 
 posttag();
 
-const promsise = new Promise(() => {});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const promsise = new Promise(() => {
+  return 1;
+});
 
 function makeWeakCached(f) {
   const cache = new Map();
@@ -53,8 +56,9 @@ function makeWeakCached(f) {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getImageCached = makeWeakCached(() => {
   return { a: 1 };
 });
 
-log(getImageCached as any);
+// log(getImageCached);

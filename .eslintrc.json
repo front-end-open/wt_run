@@ -11,7 +11,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "semi": ["error", "off"]
+    "semi": "error"
   },
   "ignorePatterns": ["dist/*"]
 }
