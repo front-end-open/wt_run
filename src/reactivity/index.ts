@@ -55,7 +55,6 @@ function makeWeakCached(f) {
     return fresh;
   };
 }
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getImageCached = makeWeakCached(() => {
   return { a: 1 };

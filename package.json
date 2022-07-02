@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "webpack serve --config  ./build/webpack.dev.js",
     "build:prod": "webpack --progress --color --config ./build/webpack.prod.js",
+    "lint:code": "eslint ./src/**/*.ts",
     "tssc": "tsc --traceResolution",
     "test": "yarn run test"
   },
@@ -24,6 +25,7 @@
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-webpack-plugin": "^3.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
     "html-webpack-plugin": "^5.5.0",
