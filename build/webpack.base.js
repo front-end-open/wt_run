@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 04:17:51
+ * @LastEditTime: 2022-07-03 05:02:55
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -10,6 +10,7 @@ const WebpackBar = require("webpackbar"); // 编译进度条
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin"); // 编译时类型检查[单独进程]
+const ESLintPlugin = require("eslint-webpack-plugin"); // lint code
 
 module.exports = {
   entry: {
@@ -57,5 +58,10 @@ module.exports = {
     }),
 
     new ForkTsCheckerWebpackPlugin(),
+
+    new ESLintPlugin({
+      // 启用ts-codelint
+      extensions: ["ts"],
+    }),
   ],
 };

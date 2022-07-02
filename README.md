@@ -15,6 +15,7 @@
 #### 开发相关
 
 - TypeScript 支持
+- TypeScript-lint
 
 ## 集成方案 FAQ
 
