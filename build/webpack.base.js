@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-03 00:22:19
+ * @LastEditTime: 2022-07-03 00:23:32
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -22,7 +22,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "../src"),
     },
-    extensions: [".js", ".ts", "tsx", "..."], // 模块解析规则, ... 用于访问webpack配置默认的解析规则. 扩展解析顺序从前往后
+    extensions: [".js", ".ts", "tsx", "..."], // 模块解析规则, ... 用于访问webpack配置默认的解析规则. 扩展解析顺序从前往后; 配置此规则，在代码内导入模块时，可以待后缀
   },
   plugins: [
     new CleanWebpackPlugin(),
