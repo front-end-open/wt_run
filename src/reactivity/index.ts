@@ -1,10 +1,12 @@
 /*
- * @LastEditTime: 2022-07-03 06:07:53
+ * @LastEditTime: 2022-07-04 00:43:28
  * @Description:
  * @Date: 2022-07-03 02:40:23
  * @Author: wangshan
  * @LastEditors: wangshan
  */
+import moment from 'moment';
+
 import { log } from '@/common/util';
 
 interface Man<T> {
@@ -61,3 +63,7 @@ const getImageCached = makeWeakCached(() => {
 });
 
 // log(getImageCached);
+
+const title: HTMLElement = document.createElement('h3');
+title.innerHTML = moment().format('yyyy-mm-dd');
+document.body.appendChild(title);

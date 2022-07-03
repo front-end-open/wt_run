@@ -11,7 +11,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "semi": "error"
+    "semi": "off",
+    "@typescript-eslint/no-explicit-any": ["error"] // 关闭ts的any类型
   },
   "ignorePatterns": ["dist/*"]
 }

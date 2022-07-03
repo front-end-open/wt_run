@@ -8,6 +8,7 @@
     "module": "esnext", // 模块方案, UMD, AMD, CommonJS, System, ESNex, ES2015...
     "sourceMap": true, // 开启sourcemap,需要配合打包工具的devtool-sourcemap功能
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true, // 允许默认导出
     // Cannot find module '@/common/util' or its corresponding type declarations.ts(2307)
     "paths": {
       // 配置模块解析路径
