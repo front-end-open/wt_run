@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 01:11:48
+ * @LastEditTime: 2022-07-04 01:54:39
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -17,7 +17,7 @@ module.exports = {
     main: path.resolve(__dirname, '../src') + '/index.ts',
   },
   output: {
-    filename: 'static/js/[name].min.js',
+    filename: 'static/js/[name].[contenthash].bundle.js', // 添加contenthash，只在内容变更时，更新hash. 利用浏览器缓存
     publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
   },
@@ -38,6 +38,7 @@ module.exports = {
       },
     ],
   },
+
   resolve: {
     modules: [path.resolve(__dirname, '../src'), 'node_modules'], // 设置模块搜索目录范围，优化编译效率. 测试发现编译效率没有明显提升
     alias: {
@@ -45,6 +46,7 @@ module.exports = {
     },
     extensions: ['.js', '.ts', 'tsx', '...'], // 模块解析规则, ... 用于访问webpack配置默认的解析规则. 扩展解析顺序从前往后; 配置此规则，在代码内导入模块时，可以待后缀
   },
+
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
