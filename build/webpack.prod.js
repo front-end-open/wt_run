@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 02:04:05
+ * @LastEditTime: 2022-07-04 02:06:20
  * @Description: production
  * @Date: 2022-07-02 20:14:29
  * @Author: wangshan
@@ -23,8 +23,34 @@ module.exports = smp.wrap(
       }),
     ],
     optimization: {
+      // 代码压缩，覆盖production默认的代码压缩插件
+      minimizer: [
+        new TerserPlugin({
+          parallel: 4,
+          terserOptions: {
+            parse: {
+              ecma: 8,
+            },
+            compress: {
+              ecma: 5,
+              warnings: false,
+              comparisons: false,
+              inline: 2,
+            },
+            mangle: {
+              safari10: true,
+            },
+            output: {
+              ecma: 5,
+              comments: false,
+              ascii_only: true,
+            },
+          },
+        }),
+      ],
       runtimeChunk: true, // 最小化entry-chunk,减少chunk体积，提高性能
       // 代码分离, 可快可共享chunk,抽离到单独的chunk
+
       splitChunks: {
         // include all types of chunks
         chunks: 'all',
