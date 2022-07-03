@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 02:00:43
+ * @LastEditTime: 2022-07-04 02:04:05
  * @Description: production
  * @Date: 2022-07-02 20:14:29
  * @Author: wangshan
@@ -35,7 +35,7 @@ module.exports = smp.wrap(
             // node_modules里的代码
             test: /[\\/]node_modules[\\/]/,
             chunks: 'all',
-            // name: 'vendors', 一定不要定义固定的name
+            // name: 'vendors', 一定不要定义固定的name, 切记不要为 cacheGroups 定义固定的 name，因为 cacheGroups.name 指定字符串或始终返回相同字符串的函数时，会将所有常见模块和 vendor 合并为一个 chunk。这会导致更大的初始下载量并减慢页面加载速度。
             priority: 10, // 优先级
             enforce: true,
           },
