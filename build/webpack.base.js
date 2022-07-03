@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 01:54:39
+ * @LastEditTime: 2022-07-04 02:23:02
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -45,6 +45,10 @@ module.exports = {
       '@': path.resolve(__dirname, '../src'),
     },
     extensions: ['.js', '.ts', 'tsx', '...'], // 模块解析规则, ... 用于访问webpack配置默认的解析规则. 扩展解析顺序从前往后; 配置此规则，在代码内导入模块时，可以待后缀
+  },
+  // 开启缓存，提升构建效率
+  cache: {
+    type: 'filesystem', // 使用文件缓存
   },
 
   plugins: [
