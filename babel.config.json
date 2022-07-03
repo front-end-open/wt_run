@@ -5,7 +5,7 @@
       {
         "useBuiltIns": "entry",
         "corejs": "3.22",
-        "browserslistConfigFile": true // 使用项目的broserlintrc配置文件
+        "ignoreBrowserslistConfig": false // 使用项目的broserlintrc配置文件
       }
     ]
   ]
