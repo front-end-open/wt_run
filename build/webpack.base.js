@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 00:21:52
+ * @LastEditTime: 2022-07-04 01:11:48
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -17,7 +17,8 @@ module.exports = {
     main: path.resolve(__dirname, '../src') + '/index.ts',
   },
   output: {
-    filename: '[name].min.js',
+    filename: 'static/js/[name].min.js',
+    publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
   },
   module: {
