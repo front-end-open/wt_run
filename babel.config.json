@@ -4,7 +4,8 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "entry",
-        "corejs": "3.22"
+        "corejs": "3.22",
+        "browserslistConfigFile": true // 使用项目的broserlintrc配置文件
       }
     ]
   ]
