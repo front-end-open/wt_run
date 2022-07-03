@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 02:06:20
+ * @LastEditTime: 2022-07-04 02:11:39
  * @Description: production
  * @Date: 2022-07-02 20:14:29
  * @Author: wangshan
@@ -8,6 +8,7 @@
 
 const { merge } = require('webpack-merge');
 const common = require('./webpack.base');
+const TerserPlugin = require('terser-webpack-plugin'); // 代码压缩
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
@@ -23,6 +24,7 @@ module.exports = smp.wrap(
       }),
     ],
     optimization: {
+      moduleIds: 'deterministic', // 设置模块标识符,  避免不必要的bundle的hash变化
       // 代码压缩，覆盖production默认的代码压缩插件
       minimizer: [
         new TerserPlugin({
@@ -54,7 +56,6 @@ module.exports = smp.wrap(
       splitChunks: {
         // include all types of chunks
         chunks: 'all',
-        moduleIds: 'deterministic', // 避免不必要的bundle的hash变化
         // 重复打包问题
         cacheGroups: {
           vendors: {
