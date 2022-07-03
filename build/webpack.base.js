@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 02:23:02
+ * @LastEditTime: 2022-07-04 02:29:10
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -49,6 +49,13 @@ module.exports = {
   // 开启缓存，提升构建效率
   cache: {
     type: 'filesystem', // 使用文件缓存
+  },
+
+  // 资源(asset)和入口起点超过指定文件限制
+  performance: {
+    hints: 'error',
+    maxAssetSize: 150000, // 设置出口bundle输出体积限制
+    maxEntrypointSize: 400000, // 设置入口chunk体积限制
   },
 
   plugins: [
