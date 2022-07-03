@@ -16,6 +16,7 @@
 
 - TypeScript 支持
 - TypeScript-lint
+- Eslint 的 ts 类型检查
 
 ## 集成方案 FAQ
 
