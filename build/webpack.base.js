@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 00:05:29
+ * @LastEditTime: 2022-07-04 00:21:52
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -38,6 +38,7 @@ module.exports = {
     ],
   },
   resolve: {
+    modules: [path.resolve(__dirname, '../src'), 'node_modules'], // 设置模块搜索目录范围，优化编译效率. 测试发现编译效率没有明显提升
     alias: {
       '@': path.resolve(__dirname, '../src'),
     },

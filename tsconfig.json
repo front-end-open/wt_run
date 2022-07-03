@@ -1,6 +1,8 @@
 {
   // 编译选项
   "compilerOptions": {
+    "target": "es5",
+    "outDir": "./dist", // 指定输出目录
     "lib": ["ESNext", "DOM", "es5", "es2015.promise"], // 开启ecmascript规则集
     "baseUrl": ".",
     "module": "esnext", // 模块方案, UMD, AMD, CommonJS, System, ESNex, ES2015...
