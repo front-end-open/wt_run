@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 02:30:57
+ * @LastEditTime: 2022-07-04 23:09:55
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -51,11 +51,32 @@ module.exports = {
     type: 'filesystem', // 使用文件缓存
   },
 
+  optimization: {
+    moduleIds: 'deterministic', // 设置模块标识符,  避免不必要的bundle的hash变化
+    runtimeChunk: true, // 最小化entry-chunk,减少chunk体积，提高性能
+    // 代码分离, 可快可共享chunk,抽离到单独的chunk
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+      // 重复打包问题
+      cacheGroups: {
+        vendors: {
+          // node_modules里的代码
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          // name: 'vendors', 一定不要定义固定的name, 切记不要为 cacheGroups 定义固定的 name，因为 cacheGroups.name 指定字符串或始终返回相同字符串的函数时，会将所有常见模块和 vendor 合并为一个 chunk。这会导致更大的初始下载量并减慢页面加载速度。
+          priority: 10, // 优先级
+          enforce: true,
+        },
+      },
+    },
+  },
+
   // 资源(asset)和入口起点超过指定文件限制
   performance: {
     hints: 'error',
-    maxAssetSize: 500000, // 设置出口bundle输出体积限制
-    maxEntrypointSize: 500000, // 设置入口chunk体积限制
+    maxAssetSize: 5000000, // 设置出口bundle输出体积限制
+    maxEntrypointSize: 5000000, // 设置入口chunk体积限制
   },
 
   plugins: [
