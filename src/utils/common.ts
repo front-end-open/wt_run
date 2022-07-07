@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-07 19:46:12
+ * @LastEditTime: 2022-07-08 00:41:22
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -36,6 +36,32 @@ export function effect(fn) {
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
   effectFn(); // 执行副作用函数
+}
+
+// 副作用收集函数第二版
+type effecFn = () => void;
+
+const effectStack: effecFn[] = [];
+// 改变激活副作用函数调用栈
+export function effectV2(fn: () => unknown) {
+  const effectFn: () => void = () => {
+    cleanup(effectFn);
+
+    activeEffect = effectFn;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    effectStack.push(effectFn);
+
+    fn();
+
+    effectStack.pop();
+
+    activeEffect = effectStack[effectStack.length - 1];
+  };
+
+  effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
+
+  effectFn();
 }
 
 export const obj = new Proxy(data, {

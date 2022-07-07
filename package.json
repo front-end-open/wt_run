@@ -4,7 +4,7 @@
   "description": "vuedeep ts version",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack serve --open --config  ./build/webpack.dev.js",
+    "serve": "webpack serve  --open --config  ./build/webpack.dev.js",
     "build:prod": "webpack --progress --color --config ./build/webpack.prod.js",
     "lint:code": "eslint ./src/**/*.ts",
     "tssc": "tsc --traceResolution",
