@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 23:09:55
+ * @LastEditTime: 2022-07-07 23:10:14
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -30,9 +30,9 @@ module.exports = {
           'babel-loader',
           {
             loader: 'ts-loader',
-            options: {
-              transpileOnly: true, // 关闭编译时，类型检查. 提高编译效率
-            },
+            // options: {
+            //   transpileOnly: true, // 关闭编译时，类型检查. 提高编译效率, < 9.3.0 需要添加此options
+            // },
           },
         ],
       },
@@ -91,7 +91,9 @@ module.exports = {
       profile: false, // 默认false，启用探查器。
     }),
 
-    new ForkTsCheckerWebpackPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      async: false, // 设置false, webpack构建进程等待fork-ts-webpack-plugin完成类型检查, 在做ts--> js的编译处理
+    }),
 
     new ESLintPlugin({
       // 启用ts-codelint
