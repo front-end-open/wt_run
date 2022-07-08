@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 03:20:17
+ * @LastEditTime: 2022-07-09 03:30:28
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -22,6 +22,7 @@ const data: Da = {
   hash: 'hashMap',
   isUpdate: false,
   step: 1,
+  foo: 1,
 };
 
 // 清除副作用
@@ -52,9 +53,9 @@ export const effect = (fn: () => void) => {
 
 // 副作用收集函数第二版
 const effectStack: effecFn[] = []; // 改变激活副作用函数调用栈
-export function effectV2(fn: () => unknown, options: Options) {
+export function effectV2(fn: () => unknown, options?: Options) {
   const effectFn: EffectFn<effecFn> = () => {
-    console.log(effectStack);
+    // console.log(effectStack);
 
     cleanup(effectFn);
 
@@ -123,7 +124,7 @@ function track(target: typeof data, key: Indexed) {
   // 当前激活的辅作用函数添加到依赖合集
   deps.add(activeEffect);
 
-  console.log(bucket);
+  //   console.log(bucket);
 
   // 添加与激活副作用关联的依赖合集
   (activeEffect as EffectFn<effecFn>).deps.push(deps);
@@ -131,7 +132,7 @@ function track(target: typeof data, key: Indexed) {
 
 // 抽离触发副作用函数
 function trigger(target: typeof data, key: Indexed) {
-  console.log(bucket);
+  //   console.log(bucket);
   const depsMap = bucket.get(target);
   if (!depsMap) return;
   const effets = depsMap.get(key);
@@ -149,7 +150,7 @@ function trigger(target: typeof data, key: Indexed) {
     });
 
   effectsToRun.forEach((effectFn: EffectFn<effecFn>) => {
-    if (effectFn.options.schduler) {
+    if (effectFn.options?.schduler) {
       // 使用副作用调度器
       effectFn.options.schduler(effectFn);
     } else {
