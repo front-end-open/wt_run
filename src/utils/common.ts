@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 00:55:07
+ * @LastEditTime: 2022-07-09 01:32:09
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -52,6 +52,8 @@ export const effect = (fn: () => void) => {
 const effectStack: effecFn[] = []; // 改变激活副作用函数调用栈
 export function effectV2(fn: () => unknown) {
   const effectFn: EffectFn<effecFn> = () => {
+    console.log(effectStack);
+
     cleanup(effectFn);
 
     activeEffect = effectFn;
@@ -62,8 +64,10 @@ export function effectV2(fn: () => unknown) {
     fn();
 
     effectStack.pop();
+    console.log('22', effectStack, effectStack[effectStack.length - 1]);
 
     activeEffect = effectStack[effectStack.length - 1];
+    console.log(activeEffect);
   };
 
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
@@ -116,6 +120,8 @@ function track(target: typeof data, key: Indexed) {
   }
   // 当前激活的辅作用函数添加到依赖合集
   deps.add(activeEffect);
+
+  console.log(bucket);
 
   // 添加与激活副作用关联的依赖合集
   (activeEffect as EffectFn<effecFn>).deps.push(deps);
