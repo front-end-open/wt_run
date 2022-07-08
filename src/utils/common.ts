@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 03:04:41
+ * @LastEditTime: 2022-07-09 03:20:17
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -35,7 +35,7 @@ function cleanup(effectFn: EffectFn<effecFn>) {
 }
 
 // 副作用函数第一版
-export const effect = (fn: () => void, options: Options) => {
+export const effect = (fn: () => void) => {
   const effectFn: EffectFn<effecFn> = () => {
     // eslint-disable-next-line no-use-before-define
     cleanup(effectFn);
@@ -45,8 +45,6 @@ export const effect = (fn: () => void, options: Options) => {
     fn();
   };
 
-  effectFn.options = options; // 设置副作用函数调度选项
-
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
   effectFn(); // 执行副作用函数
@@ -54,7 +52,7 @@ export const effect = (fn: () => void, options: Options) => {
 
 // 副作用收集函数第二版
 const effectStack: effecFn[] = []; // 改变激活副作用函数调用栈
-export function effectV2(fn: () => unknown) {
+export function effectV2(fn: () => unknown, options: Options) {
   const effectFn: EffectFn<effecFn> = () => {
     console.log(effectStack);
 
@@ -71,6 +69,8 @@ export function effectV2(fn: () => unknown) {
 
     activeEffect = effectStack[effectStack.length - 1];
   };
+
+  effectFn.options = options; // 设置副作用函数调度选项
 
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
@@ -148,7 +148,15 @@ function trigger(target: typeof data, key: Indexed) {
       }
     });
 
-  effectsToRun.forEach((effectFn: () => void) => effectFn());
+  effectsToRun.forEach((effectFn: EffectFn<effecFn>) => {
+    if (effectFn.options.schduler) {
+      // 使用副作用调度器
+      effectFn.options.schduler(effectFn);
+    } else {
+      // 未检测调度器，仍然使用自发行为
+      effectFn();
+    }
+  });
   /* eslint no-unused-expressions: "off" */
   //   effets && effets.forEach((fn) => fn());
 }
