@@ -10,13 +10,14 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true, // 允许默认导出
-    // "types": ["src/types/*.d.ts"],
+    "typeRoots": ["src/*"], // 指定包含类型的目录
+    "types": ["qs"], // 指定类型的模块
     // Cannot find module '@/common/util' or its corresponding type declarations.ts(2307)
     "paths": {
       // 配置模块解析路径
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*"], // 类型检查目录
+  "include": ["src/**/*.ts"], // 类型检查目录
   "exclude": ["node_modules", "**/*.spec.ts"] // 排查检查的模块
 }

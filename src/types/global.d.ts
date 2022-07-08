@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-08 22:57:31
+ * @LastEditTime: 2022-07-09 02:40:51
  * @Description:
  * @Date: 2022-07-07 23:23:50
  * @Author: wangshan
@@ -16,4 +16,5 @@ type ConstV = string;
 interface EffectFn<T> {
   (fn?: () => void): void;
   deps?: (number | string | Set<T>)[];
+  options?: { schduler: (fn: effecFn) => void };
 }

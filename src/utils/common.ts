@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 02:10:58
+ * @LastEditTime: 2022-07-09 03:04:41
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -9,6 +9,7 @@
 /*
 分支切换：即是在算法表达对数据对象键的读取，触发不必要副作用函数的添加，遗留副作用函数导致不必要的更新
 */
+import { Options } from './common.d';
 // data类型处理
 interface Da {
   [k: string | number | symbol]: string | number | boolean;
@@ -34,7 +35,7 @@ function cleanup(effectFn: EffectFn<effecFn>) {
 }
 
 // 副作用函数第一版
-export const effect = (fn: () => void) => {
+export const effect = (fn: () => void, options: Options) => {
   const effectFn: EffectFn<effecFn> = () => {
     // eslint-disable-next-line no-use-before-define
     cleanup(effectFn);
@@ -43,6 +44,8 @@ export const effect = (fn: () => void) => {
 
     fn();
   };
+
+  effectFn.options = options; // 设置副作用函数调度选项
 
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
