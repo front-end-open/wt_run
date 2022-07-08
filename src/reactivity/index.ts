@@ -1,11 +1,12 @@
 /*
- * @LastEditTime: 2022-07-07 23:56:45
+ * @LastEditTime: 2022-07-09 02:01:21
  * @Description:
  * @Date: 2022-07-03 05:46:29
  * @Author: wangshan
  * @LastEditors: wangshan
  */
 // import { effect, obj } from '@/utils/common';
+import '@/reactivity/MaxStack';
 import '@/reactivity/NestedEffect';
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
 // const a: number = 23;

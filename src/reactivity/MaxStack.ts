@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 01:07:36
+ * @LastEditTime: 2022-07-09 02:02:32
  * @Description: 递归更新-栈溢出
  * @Date: 2022-07-09 01:05:13
  * @Author: wangshan
@@ -11,3 +11,8 @@
  * 原因在于自增的更新，会触发副作用执行，副作用执行之间又会触发依赖的更新，同一时间内，由于副作用的执行并没有得到释放，导致堆栈溢出.
  *
  */
+import { obj, effectV2 } from '@/utils/common';
+
+effectV2(() => {
+  (obj.step as number)++; // Maxixum call statck
+});

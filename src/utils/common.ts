@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 01:32:09
+ * @LastEditTime: 2022-07-09 02:10:58
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -20,6 +20,7 @@ const data: Da = {
   text: 'Reactive-version-all',
   hash: 'hashMap',
   isUpdate: false,
+  step: 1,
 };
 
 // 清除副作用
@@ -64,10 +65,8 @@ export function effectV2(fn: () => unknown) {
     fn();
 
     effectStack.pop();
-    console.log('22', effectStack, effectStack[effectStack.length - 1]);
 
     activeEffect = effectStack[effectStack.length - 1];
-    console.log(activeEffect);
   };
 
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
@@ -136,7 +135,16 @@ function trigger(target: typeof data, key: Indexed) {
 
   //   if (!effets) return;
 
-  const effectsToRun = new Set(effets); // 从新设置set集合，避免在遍历set集合时，如果存在对Set的循环操作，并且循环内部有对集合的同一值，进行删除和添加操作。此时集合将进入死循环
+  const effectsToRun = new Set(); // 从新设置set集合，避免在遍历set集合时，如果存在对Set的循环操作，并且循环内部有对集合的同一值，进行删除和添加操作。此时集合将进入死循环
+
+  // 避免自增行为，触发堆栈溢出
+  effets &&
+    effets.forEach((v: effecFn) => {
+      if (v != activeEffect) {
+        effectsToRun.add(v);
+      }
+    });
+
   effectsToRun.forEach((effectFn: () => void) => effectFn());
   /* eslint no-unused-expressions: "off" */
   //   effets && effets.forEach((fn) => fn());
