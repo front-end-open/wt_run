@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-07 23:10:14
+ * @LastEditTime: 2022-07-08 20:34:58
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -30,9 +30,9 @@ module.exports = {
           'babel-loader',
           {
             loader: 'ts-loader',
-            // options: {
-            //   transpileOnly: true, // 关闭编译时，类型检查. 提高编译效率, < 9.3.0 需要添加此options
-            // },
+            options: {
+              transpileOnly: true, // 关闭编译时，类型检查. 提高编译效率, < 9.3.0 需要添加此options
+            },
           },
         ],
       },
@@ -49,27 +49,6 @@ module.exports = {
   // 开启缓存，提升构建效率
   cache: {
     type: 'filesystem', // 使用文件缓存
-  },
-
-  optimization: {
-    moduleIds: 'deterministic', // 设置模块标识符,  避免不必要的bundle的hash变化
-    runtimeChunk: true, // 最小化entry-chunk,减少chunk体积，提高性能
-    // 代码分离, 可快可共享chunk,抽离到单独的chunk
-    splitChunks: {
-      // include all types of chunks
-      chunks: 'all',
-      // 重复打包问题
-      cacheGroups: {
-        vendors: {
-          // node_modules里的代码
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-          // name: 'vendors', 一定不要定义固定的name, 切记不要为 cacheGroups 定义固定的 name，因为 cacheGroups.name 指定字符串或始终返回相同字符串的函数时，会将所有常见模块和 vendor 合并为一个 chunk。这会导致更大的初始下载量并减慢页面加载速度。
-          priority: 10, // 优先级
-          enforce: true,
-        },
-      },
-    },
   },
 
   // 资源(asset)和入口起点超过指定文件限制
@@ -92,7 +71,16 @@ module.exports = {
     }),
 
     new ForkTsCheckerWebpackPlugin({
+      // async 为 false，同步的将错误信息反馈给 webpack，如果报错了，webpack 就会编译失败
+      // async 默认为 true，异步的将错误信息反馈给 webpack，如果报错了，不影响 webpack 的编译
       async: false, // 设置false, webpack构建进程等待fork-ts-webpack-plugin完成类型检查, 在做ts--> js的编译处理
+      //   checkSyntacticErrors: true, // 已经遗弃
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+      },
     }),
 
     new ESLintPlugin({

@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-08 00:41:22
+ * @LastEditTime: 2022-07-09 00:55:07
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -9,22 +9,32 @@
 /*
 分支切换：即是在算法表达对数据对象键的读取，触发不必要副作用函数的添加，遗留副作用函数导致不必要的更新
 */
+// data类型处理
+interface Da {
+  [k: string | number | symbol]: string | number | boolean;
+}
+
 let activeEffect: () => void;
 const bucket = new WeakMap();
-const data = { text: 'Reactive-version-all', hash: 'hashMap', isUpdate: false };
+const data: Da = {
+  text: 'Reactive-version-all',
+  hash: 'hashMap',
+  isUpdate: false,
+};
 
 // 清除副作用
-function cleanup(effectFn) {
+function cleanup(effectFn: EffectFn<effecFn>) {
   for (let i = 0; i < effectFn.deps.length; i++) {
     const deps = effectFn.deps[i];
-    deps.delete(effectFn);
+    (deps as Set<effecFn>).delete(effectFn);
   }
 
   effectFn.deps.length = 0;
 }
 
-export function effect(fn) {
-  const effectFn = () => {
+// 副作用函数第一版
+export const effect = (fn: () => void) => {
+  const effectFn: EffectFn<effecFn> = () => {
     // eslint-disable-next-line no-use-before-define
     cleanup(effectFn);
 
@@ -36,15 +46,12 @@ export function effect(fn) {
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
   effectFn(); // 执行副作用函数
-}
+};
 
 // 副作用收集函数第二版
-type effecFn = () => void;
-
-const effectStack: effecFn[] = [];
-// 改变激活副作用函数调用栈
+const effectStack: effecFn[] = []; // 改变激活副作用函数调用栈
 export function effectV2(fn: () => unknown) {
-  const effectFn: () => void = () => {
+  const effectFn: EffectFn<effecFn> = () => {
     cleanup(effectFn);
 
     activeEffect = effectFn;
@@ -64,20 +71,27 @@ export function effectV2(fn: () => unknown) {
   effectFn();
 }
 
+// 索引属性访问
+type Data = typeof data;
+type Indexed = keyof Data;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+type IndexT = Data[Indexed];
+
 export const obj = new Proxy(data, {
-  get(target, key) {
+  get(target: typeof data, key: Indexed) {
     // debugger;
-    if (!activeEffect) return target[key];
+    if (!activeEffect) return target[key as keyof typeof target];
     // console.log("读取");
 
     // eslint-disable-next-line no-use-before-define
-    track(target, key); // 追踪key
+    track(target, key as string); // 追踪key
 
-    return target[key];
+    return target[key as keyof typeof target];
   },
-  set(target, key, newVal) {
+  set(target: typeof data, key: Indexed, newVal: number | string) {
     // console.log("更新");
-    target[key] = newVal;
+    (target[key] as IndexT) = newVal;
 
     // eslint-disable-next-line no-use-before-define
     trigger(target, key);
@@ -87,7 +101,7 @@ export const obj = new Proxy(data, {
 });
 
 // 抽离get内部副作用绑定逻辑
-function track(target, key) {
+function track(target: typeof data, key: Indexed) {
   //   debugger;
   let depsMap = bucket.get(target);
 
@@ -104,11 +118,11 @@ function track(target, key) {
   deps.add(activeEffect);
 
   // 添加与激活副作用关联的依赖合集
-  activeEffect.deps.push(deps);
+  (activeEffect as EffectFn<effecFn>).deps.push(deps);
 }
 
 // 抽离触发副作用函数
-function trigger(target, key) {
+function trigger(target: typeof data, key: Indexed) {
   console.log(bucket);
   const depsMap = bucket.get(target);
   if (!depsMap) return;
