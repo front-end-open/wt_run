@@ -9,10 +9,10 @@
     "lint:code": "eslint ./src/**/*.ts",
     "tssc": "tsc --traceResolution",
     "jest:init": "jest --init",
+    "test": "jest",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable",
-    "test": "jest"
+    "postpack": "pinst --enable"
   },
   "keywords": [
     "Jest",

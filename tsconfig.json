@@ -10,8 +10,8 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true, // 允许默认导出
-    // "typeRoots": ["./types"], // 指定包含类型的目录
-    // "types": ["qs"], // 指定类型的模块
+    // "typeRoots": ["../node_modules/@type/jest"], // 指定包含类型的目录
+    // "types": ["../node_modules/@type/jest"], // 指定类型的模块
     // Cannot find module '@/common/util' or its corresponding type declarations.ts(2307)
     "paths": {
       // 配置模块解析路径
