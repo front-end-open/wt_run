@@ -4,6 +4,10 @@
 
 ## Feature
 
+- [x] 单元测试
+- [x] ts 集成环境
+- [x] webpack 构建优化
+
 #### 构建相关
 
 > 采用 webpack 作为资源构建
