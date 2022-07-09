@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 02:32:48
+ * @LastEditTime: 2022-07-10 02:41:33
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -89,7 +89,7 @@ export function effectV2(fn: () => number | string | void, options?: Options) {
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
   // 非lazy模式直接调度
-  if (!options.lazy) {
+  if (!options?.lazy) {
     effectFn();
   }
 
