@@ -8,9 +8,11 @@
     "build:prod": "webpack --progress --color --config ./build/webpack.prod.js",
     "lint:code": "eslint ./src/**/*.ts",
     "tssc": "tsc --traceResolution",
+    "jest:init": "jest --init",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "postpack": "pinst --enable",
+    "test": "jest"
   },
   "keywords": [
     "Jest",
