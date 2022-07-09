@@ -1,13 +1,15 @@
 /*
- * @LastEditTime: 2022-07-08 20:34:58
+ * @LastEditTime: 2022-07-09 18:16:43
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
  * @LastEditors: wangshan
  */
 const path = require('path');
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar'); // 编译进度条
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'); // 编译时类型检查[单独进程]
 const ESLintPlugin = require('eslint-webpack-plugin'); // lint code
@@ -59,10 +61,30 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: '/public/index.html',
+    new webpack.DefinePlugin({
+      BASE_URL: JSON.stringify('/'),
     }),
+    new HtmlWebpackPlugin({
+      // 指定模板,此插件仍然会创建文件
+      title: 'Typescript + Vue',
+      template: '/public/index.html', // 如果使用自己的模板需要另外引入favicon图标
+    }),
+
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../public'),
+          to: path.resolve(__dirname, '../dist'),
+          toType: 'dir',
+          globOptions: {
+            dot: false, // 允许匹配以 . 开头的文件, 比如 .gitignore
+            gitignore: false,
+            ignore: ['.DS_Store', '**/index.html'],
+          },
+        },
+      ],
+    }),
+
     new WebpackBar({
       // 构建进度条
       color: '#85d', // 默认green，进度条颜色支持HEX
@@ -82,7 +104,6 @@ module.exports = {
         },
       },
     }),
-
     new ESLintPlugin({
       // 启用ts-codelint
       extensions: ['ts'],

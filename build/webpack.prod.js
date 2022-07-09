@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-04 02:11:39
+ * @LastEditTime: 2022-07-09 03:48:35
  * @Description: production
  * @Date: 2022-07-02 20:14:29
  * @Author: wangshan
@@ -7,6 +7,7 @@
  */
 
 const { merge } = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const common = require('./webpack.base');
 const TerserPlugin = require('terser-webpack-plugin'); // 代码压缩
 const BundleAnalyzerPlugin =
@@ -19,6 +20,7 @@ module.exports = smp.wrap(
   merge(common, {
     mode: 'production',
     plugins: [
+      new CleanWebpackPlugin(),
       new BundleAnalyzerPlugin({
         generateStatsFile: true,
       }),
