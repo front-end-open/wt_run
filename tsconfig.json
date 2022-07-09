@@ -2,22 +2,22 @@
   // 编译选项
   "compilerOptions": {
     "target": "es5",
-    "outDir": "./dist", // 指定输出目录
+    // "outDir": "./dist", // 指定输出目录
     "lib": ["ESNext", "DOM", "es5", "es2015.promise"], // 开启ecmascript规则集
-    "baseUrl": ".",
+    "baseUrl": "./",
     "module": "esnext", // 模块方案, UMD, AMD, CommonJS, System, ESNex, ES2015...
     "sourceMap": true, // 开启sourcemap,需要配合打包工具的devtool-sourcemap功能
     "moduleResolution": "node",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true, // 允许默认导出
-    "typeRoots": ["src/*"], // 指定包含类型的目录
-    "types": ["qs"], // 指定类型的模块
+    // "typeRoots": ["./types"], // 指定包含类型的目录
+    // "types": ["qs"], // 指定类型的模块
     // Cannot find module '@/common/util' or its corresponding type declarations.ts(2307)
     "paths": {
       // 配置模块解析路径
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts"], // 类型检查目录
+  "include": ["src/**/*.ts", "types"], // 类型检查目录
   "exclude": ["node_modules", "**/*.spec.ts"] // 排查检查的模块
 }
