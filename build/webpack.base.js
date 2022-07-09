@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 18:16:43
+ * @LastEditTime: 2022-07-09 18:58:36
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -22,6 +22,7 @@ module.exports = {
     filename: 'static/js/[name].[contenthash].bundle.js', // 添加contenthash，只在内容变更时，更新hash. 利用浏览器缓存
     publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
+    chunkFilename: 'static/[id].js', // 异步调用模块输出名称路径
   },
   module: {
     rules: [
