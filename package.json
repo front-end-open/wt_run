@@ -8,7 +8,6 @@
     "build:prod": "webpack --progress --color --config ./build/webpack.prod.js",
     "lint:code": "eslint ./src/**/*.ts",
     "tssc": "tsc --traceResolution",
-    "test": "yarn run test",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
