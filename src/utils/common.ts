@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 19:11:35
+ * @LastEditTime: 2022-07-10 01:10:47
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -54,6 +54,15 @@ export const effect = (fn: () => void) => {
 
 // 副作用收集函数第二版
 const effectStack: effecFn[] = []; // 改变激活副作用函数调用栈
+/**
+ * @callback callback
+ */
+/**
+ * @callback {callback} fn - 副作用函数
+ * @param {object} [options] - 调度函数参数
+ * @param {Function} options.schduler - 副作用调度器
+ * @param {boolean} options.lazy - 副作用懒执行
+ */
 export function effectV2(fn: () => unknown, options?: Options) {
   const effectFn: EffectFn<effecFn> = () => {
     // console.log(effectStack);
@@ -65,18 +74,27 @@ export function effectV2(fn: () => unknown, options?: Options) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     effectStack.push(effectFn);
 
-    fn();
+    // 保存副作用执行结果
+    const res = fn();
 
     effectStack.pop();
 
     activeEffect = effectStack[effectStack.length - 1];
+
+    return res; // 返回副作用执行结果
   };
 
   effectFn.options = options; // 设置副作用函数调度选项
 
   effectFn.deps = []; // 依赖合集,存储与副作用关联的依赖
 
-  effectFn();
+  // 非lazy模式直接调度
+  if (!options.lazy) {
+    effectFn();
+  }
+
+  // lazy模式下，通过返回值自调用
+  return effectFn;
 }
 
 // 索引属性访问
