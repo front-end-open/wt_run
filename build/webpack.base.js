@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 18:58:36
+ * @LastEditTime: 2022-07-10 02:45:57
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -80,7 +80,7 @@ module.exports = {
           globOptions: {
             dot: false, // 允许匹配以 . 开头的文件, 比如 .gitignore
             gitignore: false,
-            ignore: ['.DS_Store', '**/index.html'],
+            ignore: ['.DS_Store', '**/index.html'], // 排除 public内index.html复制,避免和html-webpack-plugin生成的index.html同名冲突
           },
         },
       ],
