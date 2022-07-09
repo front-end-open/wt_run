@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 01:10:47
+ * @LastEditTime: 2022-07-10 02:32:48
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -63,7 +63,7 @@ const effectStack: effecFn[] = []; // 改变激活副作用函数调用栈
  * @param {Function} options.schduler - 副作用调度器
  * @param {boolean} options.lazy - 副作用懒执行
  */
-export function effectV2(fn: () => unknown, options?: Options) {
+export function effectV2(fn: () => number | string | void, options?: Options) {
   const effectFn: EffectFn<effecFn> = () => {
     // console.log(effectStack);
 

@@ -1,12 +1,12 @@
 /*
- * @LastEditTime: 2022-07-09 03:19:21
+ * @LastEditTime: 2022-07-10 02:40:00
  * @Description:
  * @Date: 2022-07-07 23:23:50
  * @Author: wangshan
  * @LastEditors: wangshan
  */
 
-type effecFn = () => void;
+type effecFn = () => number | string | void;
 
 type ConstV = string;
 
@@ -14,7 +14,7 @@ type ConstV = string;
 
 // 混合类型，提供函数接口，使其可以像访问对象一样操作函数
 interface EffectFn<T> {
-  (fn?: () => void): void;
+  (fn?: () => number | string | void): number | string | void;
   deps?: (number | string | Set<T>)[];
-  options?: { schduler: (fn: effecFn) => void };
+  options?: { schduler?: (fn: effecFn) => void };
 }
