@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-09 03:30:28
+ * @LastEditTime: 2022-07-09 19:11:35
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -23,6 +23,7 @@ const data: Da = {
   isUpdate: false,
   step: 1,
   foo: 1,
+  st: 1,
 };
 
 // 清除副作用
