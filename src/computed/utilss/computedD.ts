@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-11 00:26:58
+ * @LastEditTime: 2022-07-11 00:42:02
  * @Description:
  * @Date: 2022-07-10 22:28:50
  * @Author: wangshan
@@ -17,6 +17,9 @@ export const ccomputed: ComputedS = (getter: effecFn) => {
   // getter看做是外部传入的真是effect
   const effecFn = effectV2(getter, {
     lazy: true,
+    schduler() {
+      dirty = true; // 每次调用完，重置dirty状态。避免后续更新。dirty一直为false。
+    },
   });
 
   const obj = {
