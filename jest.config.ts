@@ -3,9 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
-import { Config } from 'jest';
+import type { Config } from '@jest/types';
 
-export const config: Config = {
+export const config: Config.InitialOptions = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -25,16 +25,16 @@ export const config: Config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: 'tests/coverage', // 测试报告生成目录
+  coverageDirectory: 'coverage', // 测试报告生成目录
 
   // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: [
-    // 测试报告忽略搜集目录
-    '/node_modules/',
-    '/build/',
-    '/dist/',
-    '/public/',
-  ],
+  //   coveragePathIgnorePatterns: [
+  //     // 测试报告忽略搜集目录
+  //     '/node_modules/',
+  //     '/build/',
+  //     '/dist/',
+  //     '/public/',
+  //   ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: 'v8',
@@ -72,24 +72,24 @@ export const config: Config = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ['node_modules', 'src', 'test'],
+  //   moduleDirectories: ['node_modules', 'src', 'test'],
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
     'ts',
-    // 'mjs',
-    // 'cjs',
-    // 'jsx',
-    // 'js',
-    // 'tsx',
-    // 'json',
-    // 'node',
+    'mjs',
+    'cjs',
+    'jsx',
+    'js',
+    'tsx',
+    'json',
+    'node',
   ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  moduleNameMapper: {
-    '/^@(.*)$': '<rootDir>/src/$1', // 类似 webpack.resolve.alias
-  },
+  //   moduleNameMapper: {
+  //     '/^@(.*)$': '<rootDir>/src/$1', // 类似 webpack.resolve.alias
+  //   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -101,7 +101,7 @@ export const config: Config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -122,10 +122,10 @@ export const config: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: process.cwd(),
+  //   rootDir: process.cwd(),
 
   // A list of paths to directories that Jest should use to search for files in
-  roots: ['<rootDir>'],
+  //   roots: ['<rootDir>'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -143,7 +143,8 @@ export const config: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-node",
+  // 设置测试环境
+  testEnvironment: 'node',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -152,10 +153,7 @@ export const config: Config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
+  testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
@@ -172,9 +170,9 @@ export const config: Config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
+  //   transform: {
+  //     '^.+\\.tsx?$': 'ts-jest',
+  //   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
