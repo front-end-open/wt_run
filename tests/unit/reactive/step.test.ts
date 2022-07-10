@@ -1,12 +1,12 @@
 /*
- * @LastEditTime: 2022-07-10 21:43:18
+ * @LastEditTime: 2022-07-10 21:56:33
  * @Description:
  * @Date: 2022-07-10 20:51:21
  * @Author: wangshan
  * @LastEditors: wangshan
  */
 
-import { effecFn } from '../../../src/utils/common.d';
+import { effecFn } from '@/utils/common.d';
 import { obj, effectV2 } from '../../../src/utils/common';
 let effect: EffectFn<effecFn>;
 beforeAll(() => {

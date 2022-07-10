@@ -18,6 +18,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "types/**/*.ts", "tests/**/*.ts"], // 类型检查目录
+  "include": ["src/**/*.ts", "types/**/*.ts", "tests"], // 类型检查目录
   "exclude": ["node_modules", "**/*.spec.ts"] // 排查检查的模块
 }
