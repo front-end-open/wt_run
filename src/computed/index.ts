@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 22:19:26
+ * @LastEditTime: 2022-07-10 22:27:44
  * @Description: computed and lazy
  * @Date: 2022-07-10 00:45:14
  * @Author: wangshan
@@ -31,4 +31,7 @@ const effect = effectV2(
 
 log(effect() as number);
 
-log(computed(() => a));
+// 使用vue官方的计算属性API，
+// 读取计算属性的值
+const computedA = computed(() => a);
+log(computedA.value, computedA.effect);
