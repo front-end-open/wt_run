@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 22:57:34
+ * @LastEditTime: 2022-07-11 00:20:12
  * @Description: computed and lazy
  * @Date: 2022-07-10 00:45:14
  * @Author: wangshan
@@ -11,6 +11,7 @@ import { computed, ref } from 'vue';
 
 import { log } from '@/common/util';
 import { effectV2, obj } from '@/utils/common';
+import { ccomputed } from './utilss/computedD';
 
 effectV2(() => {
   console.log('非lazy，立即调度', obj.text);
@@ -35,3 +36,11 @@ log(effect() as number);
 // 读取计算属性的值
 const computedA = computed(() => a);
 log(computedA.value, computedA.effect);
+
+// 计算属性使用
+log('计算属性使用----------');
+const res = ccomputed(() => {
+  return 2;
+});
+
+log((res as { value: string | number }).value); // 获取计算属性值 value
