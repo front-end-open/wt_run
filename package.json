@@ -9,7 +9,7 @@
     "lint:code": "eslint ./src/**/*.ts",
     "tssc": "tsc --traceResolution",
     "jest:init": "jest --init",
-    "test": "jest --config ./jest.config.ts",
+    "test": "jest --config ./jest.config.ts --coverage",
     "jest:cover": "jest --coverage",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
