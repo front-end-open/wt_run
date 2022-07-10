@@ -33,6 +33,12 @@ const config: Config.InitialOptions = {
   modulePathIgnorePatterns: ['tests/coverage'], // 测试搜索范围排除目录
   testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
   testEnvironment: 'node', // 测试环境: jsdom 浏览器环境; node
+  //   globals: {
+  //     'ts-jest': {
+  //       tsconfig: './tsconfig.json',
+  //       isolatedModules: true,
+  //     },
+  //   },
 };
 
 export default config;
