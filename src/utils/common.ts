@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 02:41:33
+ * @LastEditTime: 2022-07-12 00:51:02
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -150,7 +150,7 @@ function track(target: typeof data, key: Indexed) {
 }
 
 // 抽离触发副作用函数
-function trigger(target: typeof data, key: Indexed) {
+export function trigger(target: typeof data, key: Indexed) {
   //   console.log(bucket);
   const depsMap = bucket.get(target);
   if (!depsMap) return;
