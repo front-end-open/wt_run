@@ -31,6 +31,7 @@
     "@typescript-eslint/parser": "^5.30.3",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "9",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-webpack-plugin": "^3.2.0",
@@ -52,7 +53,6 @@
     "webpackbar": "^5.0.2"
   },
   "dependencies": {
-    "copy-webpack-plugin": "^11.0.0",
     "moment": "^2.29.4",
     "terser-webpack-plugin": "^5.3.3",
     "vue": "^3.2.37"

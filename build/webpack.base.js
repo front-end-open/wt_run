@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 02:45:57
+ * @LastEditTime: 2022-07-11 23:25:12
  * @Description:
  * @Date: 2022-07-02 20:14:23
  * @Author: wangshan
@@ -71,6 +71,8 @@ module.exports = {
       template: '/public/index.html', // 如果使用自己的模板需要另外引入favicon图标
     }),
 
+    // fix: Only file and data URLs are supported by the default ESM loader.
+    // 降低copy-webpack-plugin版本到@9
     new CopyPlugin({
       patterns: [
         {
