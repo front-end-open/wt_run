@@ -11,7 +11,7 @@ const config: Config.InitialOptions = {
   clearMocks: true, // 每次构建测试之前，清除mock调用，实例，上下文信息
   collectCoverage: true, // 依赖收集
   coverageDirectory: 'tests/coverage', // 测试报告生成目录
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts?'], // 测试报告收集范围
+  collectCoverageFrom: ['src/**/*.ts'], // 测试覆盖报告收集范围
   coverageProvider: 'v8', // 测试报告需要的provider供应商: v8 | babel
   moduleFileExtensions: [
     // 模块解析文件类型
@@ -25,12 +25,13 @@ const config: Config.InitialOptions = {
     'node',
   ],
   rootDir: '.', // 应用所在的根目录
-  //   modulePaths: ['<rootDir>/src/'],
+  //   roots: ['src', 'tests'],
+  modulePaths: ['<rootDir>/src/'],
   moduleNameMapper: {
     // 模块别名匹配
     '/^@(.*)$': '<rootDir>/src/$1', // 类似 webpack.resolve.alias
   },
-  modulePathIgnorePatterns: ['tests/coverage'], // 测试搜索范围排除目录
+  modulePathIgnorePatterns: ['tests/coverage', 'node_modules'], // 测试搜索范围排除目录
   testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
   testEnvironment: 'node', // 测试环境: jsdom 浏览器环境; node
   //   globals: {

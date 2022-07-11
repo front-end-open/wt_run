@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-11 00:42:02
+ * @LastEditTime: 2022-07-12 00:14:10
  * @Description:
  * @Date: 2022-07-10 22:28:50
  * @Author: wangshan
@@ -7,7 +7,7 @@
  */
 
 import { ComputedS } from './computed';
-import { effectV2 } from '@/utils/common';
+import { effectV2 } from '../../utils/common';
 
 export const ccomputed: ComputedS = (getter: effecFn) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
