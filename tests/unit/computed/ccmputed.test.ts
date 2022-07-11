@@ -1,12 +1,12 @@
 /*
- * @LastEditTime: 2022-07-11 00:09:01
+ * @LastEditTime: 2022-07-12 00:12:21
  * @Description: 计算属性模块测试
  * @Date: 2022-07-10 23:54:28
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import { obj } from '@/utils/common';
-import { ccomputed } from '@/computed/utilss/computedD';
+import { obj } from '../../../src/utils/ComputedTool';
+import { ccomputed } from '../../../src/computed/utilss/computedD';
 
 let computedR: any;
 
