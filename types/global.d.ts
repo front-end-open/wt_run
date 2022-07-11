@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 23:09:41
+ * @LastEditTime: 2022-07-12 01:03:52
  * @Description:
  * @Date: 2022-07-07 23:23:50
  * @Author: wangshan
@@ -9,6 +9,8 @@
 declare type effecFn = () => number | string | void;
 
 declare type ConstV = string;
+
+declare type console = Console;
 
 // 接口，混合类型定义： 函数，基本类型
 
