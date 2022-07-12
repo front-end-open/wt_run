@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-10 02:20:46
+ * @LastEditTime: 2022-07-12 23:32:40
  * @Description:
  * @Date: 2022-07-02 20:17:00
  * @Author: wangshan
@@ -7,4 +7,5 @@
  */
 
 // import '@/reactivity/index';
-import '@/computed/index';
+// import '@/computed/index';
+import '@/watch/index';
