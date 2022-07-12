@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-12 00:51:02
+ * @LastEditTime: 2022-07-12 20:27:49
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -127,8 +127,7 @@ export const obj = new Proxy(data, {
 });
 
 // 抽离get内部副作用绑定逻辑
-function track(target: typeof data, key: Indexed) {
-  //   debugger;
+export function track(target: typeof data, key: Indexed) {
   let depsMap = bucket.get(target);
 
   if (!depsMap) {
@@ -143,7 +142,7 @@ function track(target: typeof data, key: Indexed) {
   // 当前激活的辅作用函数添加到依赖合集
   deps.add(activeEffect);
 
-  //   console.log(bucket);
+  console.log(bucket);
 
   // 添加与激活副作用关联的依赖合集
   (activeEffect as EffectFn<effecFn>).deps.push(deps);
@@ -152,6 +151,7 @@ function track(target: typeof data, key: Indexed) {
 // 抽离触发副作用函数
 export function trigger(target: typeof data, key: Indexed) {
   //   console.log(bucket);
+  //   debugger;
   const depsMap = bucket.get(target);
   if (!depsMap) return;
   const effets = depsMap.get(key);
