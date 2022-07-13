@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-14 00:57:13
+ * @LastEditTime: 2022-07-14 01:00:24
  * @Description: watch实现
  * @Date: 2022-07-12 22:46:42
  * @Author: wangshan
@@ -22,3 +22,12 @@ watchV2(obj, () => {
 log((obj.foo as number)++);
 log((obj.st as number)++);
 log((obj.st as number)++);
+
+// never类型推断
+// const b: string;
+
+// if (typeof b === 'string') {
+//   log(b);
+// } else {
+//   log(b);
+// }

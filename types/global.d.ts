@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-14 00:57:21
+ * @LastEditTime: 2022-07-14 01:00:04
  * @Description:
  * @Date: 2022-07-07 23:23:50
  * @Author: wangshan
@@ -31,20 +31,20 @@ interface Bar {
 }
 type All = Foo | Bar;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function handleValue(val: All) {
-  switch (val.type) {
-    case 'foo':
-      // 这里 val 被收窄为 Foo
-      val.type;
-      break;
-    case 'bar':
-      // val 在这里是 Bar
-      val.type;
-      break;
-    default:
-      // val 在这里是 never
-      const exhaustiveCheck: never = val;
-      return exhaustiveCheck;
-      break;
-  }
-}
+// declare function handleValue(val: All) {
+//   switch (val.type) {
+//     case 'foo':
+//       // 这里 val 被收窄为 Foo
+//       val.type;
+//       break;
+//     case 'bar':
+//       // val 在这里是 Bar
+//       val.type;
+//       break;
+//     default:
+//       // val 在这里是 never
+//       const exhaustiveCheck: never = val;
+//       return exhaustiveCheck;
+//       break;
+//   }
+// };
