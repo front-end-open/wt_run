@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1657817114346" clover="3.2.0">
-  <project timestamp="1657817114347" name="All files">
-    <metrics statements="870" coveredstatements="366" conditionals="52" coveredconditionals="34" methods="36" coveredmethods="18" elements="958" coveredelements="418" complexity="0" loc="870" ncloc="870" packages="9" files="16" classes="16"/>
+<coverage generated="1657817796822" clover="3.2.0">
+  <project timestamp="1657817796823" name="All files">
+    <metrics statements="870" coveredstatements="366" conditionals="54" coveredconditionals="36" methods="36" coveredmethods="18" elements="960" coveredelements="420" complexity="0" loc="870" ncloc="870" packages="9" files="16" classes="16"/>
     <package name="src">
       <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="index.ts" path="/Users/ousan/Desktop/allSource/vuedeepTs/src/index.ts">
@@ -385,7 +385,7 @@
       </file>
     </package>
     <package name="src.utils">
-      <metrics statements="410" coveredstatements="250" conditionals="26" coveredconditionals="17" methods="17" coveredmethods="10"/>
+      <metrics statements="410" coveredstatements="250" conditionals="28" coveredconditionals="19" methods="17" coveredmethods="10"/>
       <file name="ComputedTool.ts" path="/Users/ousan/Desktop/allSource/vuedeepTs/src/utils/ComputedTool.ts">
         <metrics statements="182" coveredstatements="82" conditionals="5" coveredconditionals="3" methods="7" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
@@ -620,7 +620,7 @@
         <line num="13" count="0" type="stmt"/>
       </file>
       <file name="common.ts" path="/Users/ousan/Desktop/allSource/vuedeepTs/src/utils/common.ts">
-        <metrics statements="186" coveredstatements="168" conditionals="19" coveredconditionals="14" methods="8" coveredmethods="7"/>
+        <metrics statements="186" coveredstatements="168" conditionals="21" coveredconditionals="16" methods="8" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -772,7 +772,7 @@
         <line num="149" count="59" type="stmt"/>
         <line num="150" count="59" type="stmt"/>
         <line num="151" count="59" type="stmt"/>
-        <line num="152" count="59" type="stmt"/>
+        <line num="152" count="59" type="cond" truecount="2" falsecount="0"/>
         <line num="153" count="59" type="stmt"/>
         <line num="154" count="1" type="stmt"/>
         <line num="155" count="1" type="stmt"/>
