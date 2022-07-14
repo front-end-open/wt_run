@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-13 00:17:38
+ * @LastEditTime: 2022-07-15 00:55:02
  * @Description:
  * @Date: 2022-07-04 23:15:37
  * @Author: wangshan
@@ -149,7 +149,7 @@ export function track(target: typeof data, key: Indexed) {
   console.log(bucket);
 
   // 添加与激活副作用关联的依赖合集
-  (activeEffect as EffectFn<effecFn>).deps.push(deps);
+  (activeEffect as EffectFn<effecFn>)?.deps.push(deps);
 }
 
 // 抽离触发副作用函数
