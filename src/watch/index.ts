@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-14 01:00:24
+ * @LastEditTime: 2022-07-14 23:26:34
  * @Description: watch实现
  * @Date: 2022-07-12 22:46:42
  * @Author: wangshan
@@ -14,14 +14,14 @@ import { watchV2 } from './utils/watch';
 
 // log((obj.foo as number)++);
 // log((obj.foo as number)++);
-watchV2(obj, () => {
-  log('数据变化了');
-});
+// watchV2(obj, () => {
+//   log('数据变化了');
+// });
 
-// 监听所有数据源
-log((obj.foo as number)++);
-log((obj.st as number)++);
-log((obj.st as number)++);
+// // 监听所有数据源
+// log((obj.foo as number)++);
+// log((obj.st as number)++);
+// log((obj.st as number)++);
 
 // never类型推断
 // const b: string;
@@ -31,3 +31,15 @@ log((obj.st as number)++);
 // } else {
 //   log(b);
 // }
+
+//
+// watch数据监听
+const geter = () => {
+  return obj.foo;
+};
+watchV2(geter as effecFn, (o, newV) => {
+  log('旧值:' + o);
+  log('新值:' + newV);
+});
+(obj.foo as number)++;
+(obj.foo as number)++;

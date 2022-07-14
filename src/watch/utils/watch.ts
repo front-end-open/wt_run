@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-14 00:28:23
+ * @LastEditTime: 2022-07-14 23:27:03
  * @Description: watch监听
  * @Date: 2022-07-12 23:14:58
  * @Author: wangshan
@@ -43,9 +43,10 @@ function traverse(value: typeof obj, seen: Set<typeof obj> = new Set()) {
 // 扩展watch
 // 接收getter
 export function watchV2(
-  source: typeof obj,
+  source: typeof obj | effecFn,
   cb: (o: number | string | void, n: number | string | void) => void
 ): void {
+  //   debugger;
   //   type obj = typeof obj;
   //   type key = obj['foo'];
   // 定义getter
@@ -56,35 +57,24 @@ export function watchV2(
   if (typeof source === 'function') {
     getter = source;
   } else {
-    getter = () => traverse(source);
+    getter = () => traverse(source); // unknow 属于任何类型的子类型
     //  traverse(source);
   }
 
   // 声明新旧值
   let oldVal: number | string | void, newVal: number | string | void;
   // 使用effectV2注册副作用函数时,开启lazy选项，并把返回值储存到effectFn中就可以后续手动调用
-  const effectFn = effectV2(
-    () => {
-      //   source.foo; // 硬编码操作
-      // 分支类型保护
-      if (typeof getter !== 'function') {
-        return getter;
-      } else {
-        return getter();
-      }
+  const effectFn = effectV2(() => (getter as effecFn)(), {
+    lazy: true,
+    schduler() {
+      // 在schduler中从新执行副作用函数，获取新值
+      newVal = effectFn();
+      // 传递新旧值出去
+      cb(oldVal, newVal);
+      // 更新旧值，否则会导致下一次错误的旧值
+      oldVal = newVal;
     },
-    {
-      lazy: true,
-      schduler() {
-        // 在schduler中从新执行副作用函数，获取新值
-        newVal = effectFn();
-        // 传递新旧值出去
-        cb(newVal, oldVal);
-        // 更新旧值，否则会导致下一次错误的旧值
-        oldVal = newVal;
-      },
-    }
-  );
+  });
 
   // 手动调用副作用函数，拿到的值就是旧值
   oldVal = effectFn();
