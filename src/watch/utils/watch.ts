@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-18 00:43:25
+ * @LastEditTime: 2022-07-18 01:14:16
  * @Description: watch监听
  * @Date: 2022-07-12 23:14:58
  * @Author: wangshan
@@ -51,7 +51,11 @@ type options = {
 
 export function watchV2(
   source: typeof obj | effecFn,
-  cb: (o: number | string | void, n: number | string | void) => void,
+  cb: (
+    o: number | string | void,
+    n: number | string | void,
+    oninvalidate?: (cb: () => void) => void
+  ) => void,
   options: options = {}
 ): void {
   //   debugger;
@@ -68,12 +72,20 @@ export function watchV2(
     getter = () => traverse(source); // unknow 属于任何类型的子类型
     //  traverse(source);
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let cleanup: any;
+  function handleinvalidate(fn: () => void) {
+    cleanup = fn;
+  }
   // 提取调度器执行时间 schduler;
   const job = () => {
     newVal = effectFn();
+    // 在执行副作用执行，清除过期副作用
+    if (cleanup) {
+      cleanup();
+    }
     // 传递新旧值出去
-    cb(oldVal, newVal);
+    cb(oldVal, newVal, handleinvalidate);
     // 更新旧值，否则会导致下一次错误的旧值
     oldVal = newVal;
   };
