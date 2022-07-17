@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-07-15 00:36:11
+ * @LastEditTime: 2022-07-18 00:53:50
  * @Description: watch实现
  * @Date: 2022-07-12 22:46:42
  * @Author: wangshan
@@ -37,9 +37,18 @@ import { watchV2 } from './utils/watch';
 const geter = () => {
   return obj.foo;
 };
-watchV2(geter as effecFn, (o, newV) => {
-  log('旧值:' + o);
-  log('新值:' + newV);
-});
+watchV2(
+  geter as effecFn,
+  (o, newV) => {
+    log('旧值:' + o);
+    log('新值:' + newV);
+  },
+  {
+    immidiate: true,
+    flush: 'post', // 有限watch执行
+  }
+);
 (obj.foo as number)++;
 (obj.foo as number)++;
+
+log(1111); // 优先与watch回调执行
